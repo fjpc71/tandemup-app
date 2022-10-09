@@ -30,6 +30,12 @@ Route::middleware("is:admin")->group(function () {//Admin routes.
         Route::post("/user/update/{id}", [\App\Http\Controllers\UserController::class, "updateUser"]);
         Route::post("/user/delete/{id}", [\App\Http\Controllers\UserController::class, "deleteUser"]);
         Route::post("/users/search", [\App\Http\Controllers\UserController::class, "searchUsers"]);
+
+        //Home:
+        Route::get("/home", [\App\Http\Controllers\TweetController::class, "home"])->name('private.home');
+
+        //Tweets:
+        Route::get("/home/tweets", [\App\Http\Controllers\TweetController::class, "fetch"]);
        
     });
 

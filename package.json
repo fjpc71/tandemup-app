@@ -35,6 +35,7 @@
         "velocity-animate": "^1.5.2",
         "vue-native-color-picker": "^1.2.0",
         "vue-sidebar-menu": "^5.1.2",
+        "vue-tag-cloud": "^0.0.1",
         "vue3-burger-menu": "^1.1.1"
     }
 }

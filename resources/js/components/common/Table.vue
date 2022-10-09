@@ -4,7 +4,7 @@
       <thead>
           <tr>
               <th v-for="label in labels" :key="label">{{ __(label) }}</th>
-              <th>{{ __("delete") }}</th>
+              <!-- <th>{{ __("delete") }}</th> -->
           </tr>
       </thead>
       <tbody>
@@ -47,7 +47,7 @@
               </label>
               <label v-else v-html="__(item[label])"></label>
             </td>
-            <td class="delete" @click="deleteItem(item.id)"><icon name="delete" /></td>
+            <!-- <td class="delete" @click="deleteItem(item.id)"><icon name="delete" /></td> -->
           </tr>
       </tbody>
   </table>

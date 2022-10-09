@@ -90,7 +90,7 @@ class UserController extends Controller
             Session::put('country_id', $user->country_id);
             Session::put('lang_id', $user->lang_id);
 
-            return Redirect::route('private.users');
+            return Redirect::route('private.home');
             
         }
 
