@@ -14,10 +14,16 @@ class TweetController extends Controller
     public function home()
     {
         $tweets = Tweet::paginate(20);
+        $allTweets = Tweet::all();
+        $countTweetsByDate = Tweet::select(\DB::raw('DATE(publish_date) as date'), \DB::raw('count(*) as total'))
+            ->groupBy('date')
+            ->orderBy('date', 'desc')
+            ->get();
 
-        return Inertia::render("Homes/Home", ['tweets' => $tweets]);
+        return Inertia::render("Homes/Home", ['tweets' => $tweets, 'allTweets' => $allTweets, 'dateTweets' => $countTweetsByDate]);
     }
 
+    /* Obtiene los últimos tweets a través de la API */
     public function fetch()
     {
 
