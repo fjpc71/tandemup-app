@@ -119,6 +119,7 @@ CREATE TABLE `tweets` (
   `tweet_id` bigint(20) UNSIGNED NOT NULL,
   `text` text NOT NULL,
   `hashtags` text NOT NULL,
+  `sentiment`text NOT NULL,
   `publish_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
