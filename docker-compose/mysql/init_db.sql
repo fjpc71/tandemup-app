@@ -117,9 +117,9 @@ CREATE TABLE `password_resets` (
 CREATE TABLE `tweets` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `tweet_id` bigint(20) UNSIGNED NOT NULL,
-  `text` text NOT NULL,
-  `hashtags` text NOT NULL,
-  `sentiment`text NOT NULL,
+  `text` text NULL,
+  `hashtags` text NULL,
+  `sentiment`text NULL,
   `publish_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
