@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tweet extends Model
 {
-    protected $fillable = ["text", "publish_date", "tweet_id", "hashtags"];
+    protected $fillable = ["text", "publish_date", "tweet_id", "sentiment", "hashtags"];
     public $timestamps = false;
     use HasFactory;
 

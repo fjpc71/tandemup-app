@@ -20081,7 +20081,7 @@ chart_js__WEBPACK_IMPORTED_MODULE_2__.Chart.register(chart_js__WEBPACK_IMPORTED_
   },
   setup: function setup(props) {
     var data = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)({
-      labels: ['tweet_id', 'text', 'publish_date']
+      labels: ['tweet_id', 'text', 'sentiment', 'publish_date']
     });
     var words = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([]); //Genera un array de jsons para la nube de etiquetas.
 

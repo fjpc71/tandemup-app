@@ -34,4 +34,9 @@ return [
         'key' => env('TWITTER_KEY'),
         'url' => env('TWITTER_API_URL')
     ],
+
+    'monkeylearn' => [
+        'key' => env('MONKEY_LEARN_KEY'),
+        'url' => env('MONKEY_LEARN_API_URL')
+    ],
 ];

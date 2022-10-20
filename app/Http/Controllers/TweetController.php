@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Config;
 use App\Models\Tweet;
-
+use App\Traits\ApiTrait;
 use Inertia\Inertia;
 
 class TweetController extends Controller
 {
+    use ApiTrait;
+
     //Renderiza la pantalla inicial.
     public function home()
     {
@@ -27,28 +28,8 @@ class TweetController extends Controller
     public function fetch()
     {
 
-        $curl = curl_init();
-
-        curl_setopt_array($curl, array(
-        CURLOPT_URL => Config::get('services.twitter.url'),
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_ENCODING => '',
-        CURLOPT_MAXREDIRS => 10,
-        CURLOPT_TIMEOUT => 0,
-        CURLOPT_FOLLOWLOCATION => true,
-        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-        CURLOPT_CUSTOMREQUEST => 'GET',
-        CURLOPT_HTTPHEADER => array(
-            'Authorization: Bearer '.Config::get('services.twitter.key'),
-            'Cookie: guest_id=v1%3A166508467021231199'
-        ),
-        ));
-
-        $response = curl_exec($curl);
-
-        curl_close($curl);
-        
-        $tweets = json_decode($response, true);
+        //get tweets
+        $tweets = $this->getTweets();
 
         //print_r($tweets['statuses']);
 
@@ -64,12 +45,16 @@ class TweetController extends Controller
                 
             }
 
+            //Conecta con Api de MonkeyLearn para etiquetar el tweet.
+            $sentiment = $this->getSentiments($tweet['text']);
+
             //Guarda en BBDD.
             Tweet::updateOrCreate(
                 ['tweet_id' =>  $tweet['id']],
                 [
                     'text' => $tweet['text'],
                     'hashtags' => $hashtags,
+                    'sentiment' => (isset($sentiment[0]))?$sentiment[0]['classifications'][0]['tag_name']: null,
                     'publish_date' => date("Y-m-d H:i:s", strtotime($tweet['created_at'])),
                 ],
             );

@@ -67,7 +67,7 @@ export default {
   },
   setup( props ) {
 
-    const data = ref({labels: ['tweet_id', 'text', 'publish_date']});
+    const data = ref({labels: ['tweet_id', 'text', 'sentiment', 'publish_date']});
     const words = ref([]);
 
     //Genera un array de jsons para la nube de etiquetas.
